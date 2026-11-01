@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ReadyLine answers the calls Eastside gutter and exterior-cleaning owners miss, books the estimate, and texts them the details.">
+<title>ReadyLine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: work-truck signage. Condensed display headlines, a phone-alert card as the hero proof, plain sections down a single column. */
+:root {
+  --bg: #eef1ef;
+  --surface: #ffffff;
+  --ink: #18211f;
+  --muted: #55625e;
+  --line: #cfd8d4;
+  --brand: #1d5a4c;
+  --brand-ink: #ffffff;
+  --hivis: #f2b51d;
+  --hivis-ink: #1b1600;
+  --phone: #18211f;
+  --phone-ink: #e9efec;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111816; --surface: #18221f; --ink: #e7eeeb; --muted: #9db0aa; --line: #2c3a36;
+    --brand: #5cc2a8; --brand-ink: #08201a; --hivis: #f5c444; --hivis-ink: #1b1600;
+    --phone: #0a0f0e; --phone-ink: #e9efec; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111816; --surface: #18221f; --ink: #e7eeeb; --muted: #9db0aa; --line: #2c3a36;
+  --brand: #5cc2a8; --brand-ink: #08201a; --hivis: #f5c444; --hivis-ink: #1b1600;
+  --phone: #0a0f0e; --phone-ink: #e9efec; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.55; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.02; margin: 0; letter-spacing: 0.005em; }
+h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 800; text-transform: uppercase; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; text-transform: uppercase; }
+h3 { font-size: 1.35rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; }
+p { margin: 0; max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+a { color: var(--brand); }
+:focus-visible { outline: 3px solid var(--hivis); outline-offset: 2px; }
+
+header.top { border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.mark { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.02em; display: flex; align-items: center; gap: 10px; }
+.mark .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--hivis); box-shadow: 0 0 0 4px color-mix(in srgb, var(--hivis) 30%, transparent); }
+.area { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--brand); color: var(--brand-ink); font-weight: 700; font-size: 1.02rem; text-decoration: none; padding: 13px 20px; border-radius: 6px; border: 0; cursor: pointer; }
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--line); }
+
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; padding-block: 56px 64px; }
+.hero .copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.hero h1 .hl { background: var(--hivis); color: var(--hivis-ink); padding: 0 0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hero .lede { font-size: 1.2rem; color: var(--muted); }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.phone { background: var(--phone); color: var(--phone-ink); border-radius: 34px; padding: 18px 14px 22px; max-width: 360px; width: 100%; justify-self: center; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+.phone .bar { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.72rem; opacity: .7; padding: 0 10px 12px; }
+.notif { background: color-mix(in srgb, var(--phone-ink) 9%, var(--phone)); border-radius: 18px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.notif + .notif { margin-top: 10px; }
+.notif .from { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem; opacity: .7; }
+.notif.missed .t { color: #ff8a7a; font-weight: 600; font-size: 0.95rem; }
+.notif.lead { border-left: 5px solid var(--hivis); }
+.sms { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; white-space: pre-wrap; }
+.sample { font-family: var(--font-mono); font-size: 0.68rem; opacity: .6; text-align: center; margin-top: 12px; }
+
+section.band { padding-block: 64px; border-top: 1px solid var(--line); }
+section.band .wrap { display: flex; flex-direction: column; gap: 32px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; }
+.step { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.step .n { font-family: var(--font-display); font-weight: 800; font-size: 3rem; line-height: 1; color: var(--brand); }
+.step p { color: var(--muted); }
+
+.trades { display: flex; flex-wrap: wrap; gap: 10px; }
+.trades span { font-family: var(--font-mono); font-size: 0.85rem; border: 1px solid var(--line); background: var(--surface); padding: 8px 12px; border-radius: 4px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.split > * { min-width: 0; }
+
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.plan.feature { border: 2px solid var(--brand); }
+.price { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.price small { font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--muted); }
+.plan ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; }
+.tag { align-self: flex-start; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: .1em; background: var(--hivis); color: var(--hivis-ink); padding: 4px 8px; border-radius: 3px; }
+
+.report { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; }
+.report table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 360px; }
+.report th, .report td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); }
+.report td.v { text-align: right; font-family: var(--font-mono); }
+.report tr:last-child td { border-bottom: 0; font-weight: 700; }
+.report caption { caption-side: bottom; text-align: left; padding: 10px 16px; font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+
+.faq { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 40px; }
+.faq div { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.faq h3 { font-size: 1.15rem; }
+.faq p { color: var(--muted); }
+
+.cta-band { background: var(--brand); color: var(--brand-ink); }
+.cta-band .wrap { padding-block: 56px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+.contact { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.number { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 600; background: color-mix(in srgb, var(--brand-ink) 14%, transparent); padding: 10px 14px; border-radius: 6px; user-select: all; }
+.copy-btn { background: var(--hivis); color: var(--hivis-ink); border: 0; font-weight: 700; padding: 12px 16px; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+.status { font-family: var(--font-mono); font-size: .8rem; min-height: 1.2em; }
+footer .wrap { padding-block: 28px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: .9rem; }
+
+@media (max-width: 820px) {
+  .hero .wrap, .split, .plans, .faq { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .hero .wrap { padding-block: 36px 48px; gap: 36px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .notif.lead { animation: pop .6s .4s both ease-out; }
+  @keyframes pop { from { transform: translateY(8px); } to { transform: none; } }
+}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="mark"><span class="dot" aria-hidden="true"></span>ReadyLine</div>
+    <div class="area">Serving the Eastside, WA</div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="copy">
+        <span class="eyebrow">For owner-operators with no office staff</span>
+        <h1>You're on the roof. <span class="hl">Your phone is ringing.</span></h1>
+        <p class="lede">ReadyLine answers the calls you can't, books the estimate, and texts you the details within seconds. Every month you see exactly which jobs it saved you.</p>
+        <div class="ctas">
+          <a class="btn" href="#start">Start a free 14-day pilot</a>
+          <a class="btn ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+      <div class="phone" aria-label="Example text alerts on an owner's phone">
+        <div class="bar"><span>10:42</span><span>Example</span></div>
+        <div class="notif missed">
+          <div class="from"><span>Phone</span><span>10:39 AM</span></div>
+          <div class="t">Missed call · (425) 555-0187</div>
+        </div>
+        <div class="notif lead">
+          <div class="from"><span>ReadyLine</span><span>10:41 AM</span></div>
+          <div class="sms">NEW LEAD
+Dana R. | (425) 555-0187
+Kirkland - gutters overflowing over
+front door, 2-story house
+Timing: this week
+Status: Estimate booked Thu 9:00 AM
+Recording: link</div>
+        </div>
+        <div class="sample">Sample alert. Names and numbers are made up.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="how">
+    <div class="wrap">
+      <div><span class="eyebrow">How it works</span><h2>Three steps, no new app</h2></div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>You miss a call</h3><p>Your business line forwards unanswered calls to ReadyLine. You keep your number, and you still answer whenever you can.</p></div>
+        <div class="step"><span class="n">2</span><h3>ReadyLine picks up</h3><p>It tells callers it's an automated assistant and that the call is recorded, gets the address and job details, and books the estimate or promises your callback.</p></div>
+        <div class="step"><span class="n">3</span><h3>You get a text</h3><p>A summary lands on your phone seconds after the call. Leaks and other urgent calls get transferred straight to your cell.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span class="eyebrow">Built for</span>
+        <h2>Trades that can't pick up mid-job</h2>
+        <p>Fall is gutter season on the Eastside, and the busiest weeks are exactly when you're too high up a ladder to answer. A caller who reaches voicemail usually tries the next company on the list.</p>
+      </div>
+      <div class="trades" aria-label="Trades we work with">
+        <span>Gutter cleaning</span><span>Roof moss removal</span><span>Pressure washing</span><span>Window cleaning</span><span>Soft washing</span><span>Christmas light installs</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="pricing">
+    <div class="wrap">
+      <div><span class="eyebrow">Pricing</span><h2>Try it free, then decide</h2></div>
+      <div class="plans">
+        <div class="plan feature">
+          <span class="tag">Start here</span>
+          <h3>14-day pilot</h3>
+          <div class="price">$0</div>
+          <ul>
+            <li>Set up for your services, area and hours</li>
+            <li>Instant text summary after every call</li>
+            <li>Weekly check-in to tune what it says</li>
+            <li>Nothing charged when the pilot ends</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Standard</h3>
+          <div class="price">$199 <small>/ month + $500 setup</small></div>
+          <ul>
+            <li>Everything in the pilot</li>
+            <li>Follow-up texts on quotes that go quiet</li>
+            <li>Monthly report of jobs saved</li>
+            <li>Month to month. Cancel by text</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span class="eyebrow">The monthly report</span>
+        <h2>You'll know if it pays for itself</h2>
+        <p>Each month you get a short report of the calls ReadyLine handled and the jobs you confirmed. If the numbers aren't there, we say so and fix it, or you cancel.</p>
+      </div>
+      <div class="report">
+        <table>
+          <caption>Example layout. Your report uses your real numbers.</caption>
+          <tbody>
+            <tr><td>Calls answered for you</td><td class="v">38</td></tr>
+            <tr><td>Real leads (not spam)</td><td class="v">24</td></tr>
+            <tr><td>Estimates booked</td><td class="v">11</td></tr>
+            <tr><td>Quotes followed up</td><td class="v">7</td></tr>
+            <tr><td>Jobs you confirmed won</td><td class="v">6</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div><span class="eyebrow">Straight answers</span><h2>Questions owners ask</h2></div>
+      <div class="faq">
+        <div><h3>Will callers know it's not me?</h3><p>Yes. It says up front that it's your automated assistant and that the call is recorded, which Washington law requires.</p></div>
+        <div><h3>Can a caller still reach me?</h3><p>Always. Anyone who asks for you gets a promised callback time, and urgent calls are transferred to your cell.</p></div>
+        <div><h3>Do I need a new number?</h3><p>No. You keep your number and turn on forwarding for unanswered calls, which takes about five minutes.</p></div>
+        <div><h3>Who owns the call recordings?</h3><p>You do. We use them only to run your service and delete them when you leave, unless you want a copy.</p></div>
+        <div><h3>I already use Jobber or Housecall Pro.</h3><p>Those include their own phone assistants. Try theirs first. ReadyLine is for owners who don't use one and want it set up and managed for them.</p></div>
+        <div><h3>Will it quote prices?</h3><p>Only the ranges you approve. Final prices always come from you after you see the job.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="start">
+    <div class="wrap">
+      <span class="eyebrow" style="color:inherit;opacity:.8">Start your pilot</span>
+      <h2>Call the demo line, then let's talk</h2>
+      <p>Hear exactly what your customers would hear. Then call or text me and I'll set up your free pilot this week.</p>
+      <div class="contact">
+        <span class="number" id="phone-number">(425) 000-0000</span>
+        <button class="copy-btn" id="copy-number" type="button">Copy number</button>
+      </div>
+      <div class="status" id="copy-status" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>ReadyLine · Redmond, Kirkland, Bellevue, Sammamish, Woodinville, Bothell</span>
+    <span>No contracts. Your number, your data.</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copy-number').addEventListener('click', function () {
+  var el = document.getElementById('phone-number');
+  var status = document.getElementById('copy-status');
+  var text = el.textContent.trim();
+  function selectIt() {
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    status.textContent = 'Number selected. Press Ctrl+C or Cmd+C to copy.';
+  }
+  try {
+    navigator.clipboard.writeText(text).then(function () { status.textContent = 'Copied ' + text; }, selectIt);
+  } catch (e) { selectIt(); }
+});
+</script>
+</body>
+</html>

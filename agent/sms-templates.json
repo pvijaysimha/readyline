@@ -1,0 +1,6 @@
+{
+  "owner_alert": "NEW LEAD - {{BUSINESS_NAME}}\n{{CALLER_NAME}} | {{CALLBACK_NUMBER}}\n{{CITY}} - {{JOB_DESCRIPTION}}\nTiming: {{URGENCY}}\nStatus: {{STATUS}}\nRecording: {{CALL_LINK}}",
+  "caller_confirmation": "Thanks for calling {{BUSINESS_NAME}}, {{CALLER_FIRST_NAME}}. {{BOOKING_LINE}}. Questions? Reply here or call {{BUSINESS_PHONE}}. Reply STOP to opt out.",
+  "quote_followup_day2": "Hi {{CALLER_FIRST_NAME}}, it's {{OWNER_NAME}} with {{BUSINESS_NAME}}. Just checking whether you had any questions about the estimate for {{JOB_SHORT}}. Happy to adjust it or get you on the schedule. Reply STOP to opt out.",
+  "quote_followup_day5": "Hi {{CALLER_FIRST_NAME}}, last check-in from {{BUSINESS_NAME}}. If now isn't the right time, no problem; just reply when you're ready and we'll get you scheduled. Reply STOP to opt out."
+}

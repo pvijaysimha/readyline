@@ -1,0 +1,14 @@
+{
+  "_note": "Demo client. Made-up business for the ReadyLine demo line.",
+  "BUSINESS_NAME": "Cascade Gutter Pros",
+  "TRADE": "gutter cleaning and roof moss removal",
+  "SERVICE_AREA": "the Eastside",
+  "OWNER_NAME": "Mike",
+  "SERVICES_LIST": "- Gutter cleaning and downspout flushing\n- Roof moss removal and treatment\n- Gutter guard installation",
+  "NOT_OFFERED": "roof replacement, new gutter installation, interior work",
+  "CITIES": "Redmond, Kirkland, Bellevue, Sammamish, Woodinville, Bothell",
+  "BOOKING_RULES": "offer weekday estimate slots between 8am and 4pm and confirm the day and time back to the caller",
+  "CALLBACK_PROMISE": "within 2 business hours",
+  "PRICE_GUIDANCE": "If asked, say Mike gives free estimates and confirms the price after seeing the house.",
+  "EMERGENCY_NUMBER": "+14250000000"
+}

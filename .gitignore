@@ -1,0 +1,19 @@
+# Generated output
+build/
+
+# Real client files and call data stay out of git
+/clients/
+*.call-log.csv
+calls*.csv
+
+# Secrets
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
