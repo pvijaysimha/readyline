@@ -1,0 +1,6 @@
+Call Start,Caller Name,Caller Number,Caller City,Call Type,Disposition,Duration (s)
+11/03/2026 10:39 AM,Dana R.,(425) 555-0187,Kirkland,New Customer,Appointment Booked,143
+11/03/2026 01:12 PM,,(206) 555-0110,,Robocall,Abandoned,6
+11/04/2026 08:05 AM,Priya S.,(425) 555-0144,Redmond,New Customer,Callback Requested,98
+11/05/2026 03:47 PM,Tom W.,(425) 555-0199,Bellevue,Existing Customer,Appointment Booked,121
+11/06/2026 11:30 AM,Lead seller,(800) 555-0123,Seattle,Solicitor,Message Taken,45

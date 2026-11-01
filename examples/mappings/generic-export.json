@@ -1,0 +1,33 @@
+{
+  "_note": "Example mapping for a made-up platform export (examples/platform_export_sample.csv). Copy this file and change the column names and values to match your platform's real export.",
+  "columns": {
+    "date": "Call Start",
+    "caller_name": "Caller Name",
+    "city": "Caller City",
+    "category": "Call Type",
+    "outcome": "Disposition"
+  },
+  "date_format": "%m/%d/%Y %I:%M %p",
+  "values": {
+    "category": {
+      "New Customer": "lead",
+      "Existing Customer": "lead",
+      "Spam": "spam",
+      "Robocall": "spam",
+      "Solicitor": "sales"
+    },
+    "outcome": {
+      "Appointment Booked": "booked",
+      "Message Taken": "callback",
+      "Callback Requested": "callback",
+      "Transferred": "asked_human",
+      "Requested Human": "asked_human",
+      "Abandoned": "hung_up_greeting"
+    }
+  },
+  "defaults": {
+    "followed_up": "no",
+    "job_won": "no",
+    "job_value": ""
+  }
+}
