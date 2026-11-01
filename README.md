@@ -30,13 +30,33 @@ Requires Python 3.9+; no extra packages.
 
 The script refuses to run if any detail is missing or if the recording notice was removed from the greeting. Washington requires all parties' consent to record a call (RCW 9.73.030), so the notice must stay.
 
+**Turn a platform's call export into a call log**
+
+Copy `examples/mappings/generic-export.json`, change it to match your platform's column names and values, then run:
+
+```
+python tools/import_calls.py export.csv --mapping my-platform.json --out build/calls.csv
+```
+
+It warns about any value it doesn't recognize and leaves out callers' phone numbers. Mark `job_won` and `job_value` by hand once the owner confirms which jobs they won.
+
 **Build a monthly report**
 
-Export the month's calls from the platform into the CSV format shown in `examples/call_log_sample.csv`, then run:
+```
+python tools/monthly_report.py build/calls.csv --client "Client Name" --month "November 2026" --price 199 \
+    --format html --changes "What you tuned" --next "What you'll improve" --out build/report.html
+```
+
+Use `--format markdown` (the default) for a quick text version.
+
+**Write a text message**
 
 ```
-python tools/monthly_report.py calls.csv --client "Client Name" --month "November 2026" --price 199 --out build/report.md
+python tools/render_sms.py --list
+python tools/render_sms.py caller_confirmation BUSINESS_NAME="..." CALLER_FIRST_NAME=Dana BOOKING_LINE="..." BUSINESS_PHONE="..."
 ```
+
+It refuses customer texts without "Reply STOP to opt out" and tells you how many SMS segments the text uses.
 
 **Run the checks**
 

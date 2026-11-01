@@ -29,7 +29,9 @@ The owner of this project works on it about 10 hours a week. Keep things simple 
 - `agent/sms-templates.json`: owner alert, caller confirmation, quote follow-ups.
 - `examples/clients/cascade-gutter-pros.json`: demo client (made up).
 - `tools/render_agent.py`: fills the template for a client; fails on missing values or a removed recording notice.
-- `tools/monthly_report.py`: turns a call-log CSV into the monthly report (Markdown).
+- `tools/import_calls.py`: converts a voice platform's CSV export to the call-log format using a JSON mapping (`examples/mappings/`); drops caller phone numbers.
+- `tools/monthly_report.py`: turns a call log into the monthly report (Markdown or a self-contained HTML page).
+- `tools/render_sms.py`: fills SMS templates; enforces the STOP opt-out line on customer texts and reports SMS segment count.
 - `docs/`: setup checklist and pilot agreement draft (needs attorney review).
 - Tests: `python -m unittest discover -s tests -v` (standard library only, Python 3.9+).
 
@@ -42,6 +44,7 @@ The owner of this project works on it about 10 hours a week. Keep things simple 
 ## Likely next steps
 
 1. Replace the placeholder phone number on the site once the demo line exists.
-2. Add a call-log importer for whichever voice platform is chosen (map its CSV export to `examples/call_log_sample.csv` columns).
-3. Turn the monthly report into a simple HTML or PDF the owner can text to clients.
-4. Track prospects and pilots (currently in a spreadsheet outside this repo).
+2. Once a voice platform is chosen, add a real mapping file for its export in `examples/mappings/` (the current one is for a made-up export).
+3. Track prospects and pilots (currently in a spreadsheet outside this repo).
+
+Done: generic call-log importer, HTML monthly report, SMS renderer with checks.
