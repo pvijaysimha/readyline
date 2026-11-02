@@ -68,7 +68,7 @@ python -m unittest discover -s tests -v
 
 `site/index.html` is a single static page. The GitHub Actions workflow in `.github/workflows/pages.yml` publishes it with GitHub Pages on every push to `main`. Turn Pages on once under the repo's **Settings → Pages → Source: GitHub Actions**.
 
-Before sharing the site, replace the placeholder phone number `(425) 000-0000` in `site/index.html`.
+The site shows the demo line, (425) 696-4103, which answers as the sample business Cascade Gutter Pros. Add your own contact number before sending contractors to the site.
 
 ## Not in this repo
 

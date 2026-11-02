@@ -24,7 +24,7 @@ The owner of this project works on it about 10 hours a week. Keep things simple 
 
 ## Repo layout
 
-- `site/index.html`: landing page, published by GitHub Pages via `.github/workflows/pages.yml`. Placeholder phone `(425) 000-0000` must be replaced before sharing.
+- `site/index.html`: landing page at https://pvijaysimha.github.io/readyline/, published by GitHub Pages via `.github/workflows/pages.yml`. Shows the demo line (425) 696-4103 (Retell, answers as the made-up Cascade Gutter Pros). The owner's own contact number is not on the site yet.
 - `agent/voice-agent-prompt.txt`: prompt template with `{{PLACEHOLDERS}}`.
 - `agent/sms-templates.json`: owner alert, caller confirmation, quote follow-ups.
 - `examples/clients/cascade-gutter-pros.json`: demo client (made up).
@@ -41,10 +41,18 @@ The owner of this project works on it about 10 hours a week. Keep things simple 
 - Plain, short copy for contractors. No jargon like "AI-powered" in customer-facing text.
 - Keep the site a single static HTML file with tokens for light and dark themes.
 
+## Voice platform: Retell AI (chosen Nov 1, 2026)
+
+- Workspace "ReadyLine"; demo agent "Cascade Gutter Pros (demo)", single-prompt type. Dashboard shows about $0.134/min with the current model.
+- Demo number (425) 696-4103, inbound only, routed to the agent's V0 draft so edits apply immediately. Outbound is disabled; keep it that way (TCPA).
+- Post-call extraction fields match the call-log columns: caller_name, callback_number, city, job_description, timing, category (lead/spam/sales), outcome (booked/callback/asked_human/hung_up_greeting).
+- Call limits: ends after 37 s of silence, max call about 8 min.
+- Not set up yet: SMS add-on ($20/month + $0.01/SMS in Retell), owner text via Zapier/Make, Calendly booking.
+
 ## Likely next steps
 
-1. Replace the placeholder phone number on the site once the demo line exists.
-2. Once a voice platform is chosen, add a real mapping file for its export in `examples/mappings/` (the current one is for a made-up export).
+1. Add the owner's contact number to the site.
+2. Write `examples/mappings/retell.json` once there's a real Retell call-history export to map.
 3. Track prospects and pilots (currently in a spreadsheet outside this repo).
 
 Done: generic call-log importer, HTML monthly report, SMS renderer with checks.
